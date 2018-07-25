@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import CommentList from 'components/CommentList'
 
 class CommentBox extends Component {
   state = {
