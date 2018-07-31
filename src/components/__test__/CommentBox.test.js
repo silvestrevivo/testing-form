@@ -16,6 +16,8 @@ beforeEach(() => {
 
 afterEach(() => {
   wrapped.unmount()
+  // this occurs after each test occurs
+  // recommended when we use mount() methode
 })
 
 it('has a text area and a button', () => {
@@ -24,6 +26,8 @@ it('has a text area and a button', () => {
 })
 
 describe('the text area', () => {
+  // with describe, we can collect all the actions for the before each
+  // => Don't repeat your self
   beforeEach(() => {
     wrapped.find('textarea').simulate('change', {
       target: { value: 'new comment' },
