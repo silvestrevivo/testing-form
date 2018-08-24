@@ -34,5 +34,10 @@ it('can fetch a list of comments and display them', () => {
 
     done()
     wrapped.unmount()
-  }, 100)
+  })
 })
+
+/*
+With integration test we do not test an expecific part of the code: many parts
+of the code are tested because they are correlated.
+*/
