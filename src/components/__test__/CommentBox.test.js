@@ -7,6 +7,8 @@ import Root from 'root'
 let wrapped
 
 beforeEach(() => {
+  // We could choose shallow as well, but the purpose is to show in the
+  // tutorial how this works compared with shallow, just that.
   wrapped = mount(
     <Root>
       <CommentBox />
@@ -17,7 +19,7 @@ beforeEach(() => {
 afterEach(() => {
   wrapped.unmount()
   // this occurs after each test occurs
-  // recommended when we use mount() methode
+  // recommended when we use mount() methode to avoid problems with the DOM
 })
 
 it('has a text area and two buttons', () => {
@@ -26,11 +28,12 @@ it('has a text area and two buttons', () => {
 })
 
 describe('the text area', () => {
-  // with describe, we can collect all the actions for the before each
+  // with describe, we can collect all the actions for textarea and then we can
+  // add a beforeEach to collect previous status for each testing
   // => Don't repeat your self
   beforeEach(() => {
-    wrapped.find('textarea').simulate('change', {
-      target: { value: 'new comment' },
+    wrapped.find('textarea').simulate('change', { // providing fake event
+      target: { value: 'new comment' },// value is the prop of textarea as input
     })
     wrapped.update()
   })
